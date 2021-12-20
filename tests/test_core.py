@@ -20,10 +20,12 @@ class TestCoreSuites:
     #
     ##########################################################################################
 
-    test_user = Customer("Test User", "100-1100")
-    test_user.deposit(100)
+    
+    def setup_class(self):
+        self.test_user = Customer("Test User", "100-1100")
+        self.test_user.deposit(100)
 
-    def test_deposit_1000(self):
+    def test_transcation(self):
         self.test_user.deposit(1000)
         assert self.test_user.balance == 1100
 
@@ -35,6 +37,10 @@ class TestCoreSuites:
 
         with pytest.raises(RuntimeError):
             self.test_user.withdraw(700)
+            
+    def Disable_test_deposit_1000(self):
+        self.test_user.deposit(1000)
+        assert self.test_user.balance == 1100
 
     def Disable_test_withdraw_500(self):
         self.test_user.withdraw(500)
