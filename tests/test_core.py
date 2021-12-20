@@ -47,8 +47,8 @@ class TestCoreSuites:
         assert self.test_user.balance == 600
 
     def Disable_test_add_interest(self):
-        assert CustomerDataProcess.add_interest(self.test_user, 0.1) == 660
+        assert int(CustomerDataProcess.add_interest(self.test_user, 0.1)) == 660
 
     def Disable_test_withdraw_700(self):
-        with pytest.raises(ValueError):
+        with pytest.raises(RuntimeError):
             self.test_user.withdraw(700)
